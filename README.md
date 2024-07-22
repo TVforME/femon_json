@@ -1,7 +1,8 @@
 # femon_json
 DVB frontend stats monitor with extra JSON formatting and UDP output.
 
-`femon_json` is a tool for monitoring frontend status of DVB devices, similar to `femon`. I've added the UDP option to send over UDP to a remote listener as part of my repeater project for the core to know if the receiver has a valid DVB signal and, in addition, extended the functionality to use with my receiver project to separate the lock signals into individual values without having to use fancy regex filters to decipher SCVYL flags.
+`femon_json` is an extention to the goog old femon tool in the dvbapi package.
+femon is for monitoring frontend in non-blocking mode for DVB frontends, I've removed the -A audio option from femon as I found it useless and refined my need to change how the tool formats the status on the stdio output. I added a UDP option to send over UDP to a remote listener from those contemplating on using for monitoring remotely. femon reports the lock status as SCVYL flags and to determine each lock status, needed to resort to fancy regex filters to decipher SCVYL flags which was slow and addition code hence, my modifications.
 
 ## Features
 
@@ -22,7 +23,7 @@ Options
 -f number: Use given frontend (default 0)
 -c number: Samples to take (default 0 = infinite)
 -u ip:port: Send status over UDP to the specified IP and port
---version: Display version information
+--version: Display version information  (added to determine if the tool is available on the machine) Returns V1.0.0
 ```
 ## Examples
 Monitor adapter 0, frontend 0, with JSON output
@@ -34,16 +35,16 @@ Below is a breakdown of what is sent in JSON format with the -J option:
 
 ```bash
 {
-  "adapter": X,           // int (X = the adapter to monitor. Example adapter: 0)
-  "signal": int,          // scaled ((signal * 100) / 0xffff)
-  "snr": int,             // scaled ((snr * 100) / 0xffff)
+  "adapter": X,                 // int (X = the adapter to monitor. Example adapter: 0)
+  "signal": int,                // scaled ((signal * 100) / 0xffff)
+  "snr": int,                   // scaled ((snr * 100) / 0xffff)
   "ber": int,
   "unc": int,
-  "signal_lock": true/false,
-  "carrier_lock": true/false,
-  "viterbi_lock": true/false,
-  "sync_lock": true/false,
-  "lock": true/false
+  "signal_lock": true/false,     // (S)
+  "carrier_lock": true/false,    // (C)
+  "viterbi_lock": true/false,    // (V)
+  "sync_lock": true/false,       // (Y)
+  "lock": true/false             // (L)
 }
 ```
 Monitor adapter 0, frontend 0, with human-readable output
