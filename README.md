@@ -64,7 +64,8 @@ femon_json --version
 To build and install femon_json, follow these steps:
 
 ## Install Dependencies
-Make sure you have the necessary dependencies installed on your system. You will need libdvbapi-dev and libjson-c-dev and the build system GCC
+Make sure you have the necessary dependencies installed on your system. 
+You will need libdvbapi-dev and libjson-c-dev and the build system GCC linker etc.
 
 ```bash
 sudo apt-get update
