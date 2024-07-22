@@ -2,7 +2,7 @@
  *
  * Copyright (C) 2003 convergence GmbH
  * Johannes Stezenbach <js@convergence.de>
- * Modified by Rober Hensel <vk3dgtv@gmail.com>
+ * Modified by Robert Hensel <vk3dgtv@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
