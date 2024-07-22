@@ -1,8 +1,8 @@
 # femon_json
 DVB frontend stats monitor with extra JSON formatting and UDP output.
 
-`femon_json` is an extention to the goog old femon tool in the dvbapi package.
-femon is for monitoring frontend in non-blocking mode for DVB frontends, I've removed the -A audio option from femon as I found it useless and refined my need to change how the tool formats the status on the stdio output. I added a UDP option to send over UDP to a remote listener from those contemplating on using for monitoring remotely. femon reports the lock status as SCVYL flags and to determine each lock status, needed to resort to fancy regex filters to decipher SCVYL flags which was slow and addition code hence, my modifications.
+`femon_json` is an extention to the femon toolpackaged with dvbapi tools.
+femon is used for monitoring dvb frontend in non-blocking mode, I've removed the -A audio option from femon as I found it useless and added json format to tailor the status to the stdio output. In addition, added a UDP option to send status over UDP to a remote listener from those contemplating on monitoring remotely. femon reports the lock status as SCVYL flags and I needed the requirement to have the flags split out to remove the need for fancy regex filters to decipher SCVYL flags removing the need for addition regex filter code. (Less is best)
 
 ## Features
 
