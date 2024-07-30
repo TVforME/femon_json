@@ -187,7 +187,13 @@ static int do_mon(unsigned int adapter, unsigned int frontend, int human_readabl
             fe_type = "ATSC";
             break;
     }
-    printf("FE: %s (%s)\n", fe_info.name, fe_type);
+    
+    // Print adatpter info in json format. Otherwise breaks json marshalling on receive side.
+     if (json_output) {
+      printf("{ \"fe\": \"%s\", \"type\": \"%s\" }\n", fe_info.name, fe_type);
+    } else {
+      printf("FE: %s (%s)\n", fe_info.name, fe_type);
+    } 
 
     result = check_frontend(fe, human_readable, count, adapter, json_output);
 
