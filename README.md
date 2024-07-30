@@ -51,10 +51,28 @@ Monitor adapter 0, frontend 0, with human-readable output
 ```bash
 femon_json -H -a 0 -f 0
 ```
+Example stdio output
+
+```bash
+FE: Afatech AF9033 (DVB-T) (DVBT)
+status SCVYL | signal  29% | snr  96% | ber 80 | unc 22631 | FE_HAS_LOCK
+status SCVYL | signal  29% | snr  93% | ber 15 | unc 22631 | FE_HAS_LOCK
+.....
+```
+
 Monitor adapter 0, frontend 0, with JSON output and send status over UDP to 239.255.0.100:5000
 
 ```bash
 femon_json -J -a 0 -f 0 -u 239.255.0.100:5000
+```
+Example stdio output
+
+```bash
+{ "fe": "Afatech AF9033 (DVB-T)", "type": "DVBT" }
+{ "adapter": 0, "signal": 9, "snr": 93, "ber": 0, "unc": 756120, "signal_lock": true, "carrier_lock": true, "viterbi_lock": true, "sync_lock": true, "lock": true }
+{ "adapter": 0, "signal": 29, "snr": 96, "ber": 95, "unc": 22631, "signal_lock": true, "carrier_lock": true, "viterbi_lock": true, "sync_lock": true, "lock": true }
+{ "adapter": 0, "signal": 29, "snr": 96, "ber": 30, "unc": 22631, "signal_lock": true, "carrier_lock": true, "viterbi_lock": true, "sync_lock": true, "lock": true }
+....
 ```
 Display version information
 ```bash
