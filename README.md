@@ -93,7 +93,7 @@ sudo apt-get install libdvbapi-dev libjson-c-dev build-essential
 
 Clone the Repository
 ``` bash
-git clone https://github.com/TVforME/femon_json.git
+git clone https://github.com/TVforME/femon_json
 cd femon_json
 make
 sudo make install
